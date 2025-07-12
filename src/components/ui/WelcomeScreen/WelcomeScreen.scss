@@ -1,0 +1,191 @@
+.welcome-screen {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem;
+
+  &__content {
+    width: 60rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(31, 41, 55, 0.9) 0%, rgba(17, 24, 39, 0.9) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    padding: 4rem 3rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+  }
+
+  &__hero {
+    margin-bottom: 3rem;
+  }
+
+  &__icon {
+    background: linear-gradient(135deg, var(--accent-color), #8b5cf6);
+    border-radius: 1.5rem;
+    width: 6rem;
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 8px 32px rgba(79, 70, 229, 0.3);
+    color: white;
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    color: var(--primary-text);
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary-text), #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &__subtitle {
+    font-size: 1.25rem;
+    color: var(--secondary-text);
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+
+  &__description {
+    font-size: 1.125rem;
+    color: var(--secondary-text);
+    margin-bottom: 3rem;
+    text-align: center;
+    line-height: 1.6;
+    max-width: 32rem;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    min-width: 150px;
+    justify-content: center;
+
+    &--primary {
+      background: linear-gradient(135deg, var(--accent-color), #8b5cf6);
+      color: white;
+      box-shadow: 0 4px 16px rgba(79, 70, 229, 0.3);
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(79, 70, 229, 0.4);
+      }
+    }
+
+    &--secondary {
+      background: var(--secondary-bg);
+      color: var(--primary-text);
+      border: 1px solid var(--border-color);
+
+      &:hover {
+        background: var(--accent-bg);
+        border-color: var(--accent-color);
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  &__features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 42rem;
+  }
+
+  &__feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(79, 70, 229, 0.3);
+      transform: translateY(-2px);
+    }
+
+    h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--primary-text);
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 0.875rem;
+      color: var(--secondary-text);
+      line-height: 1.5;
+    }
+  }
+
+  &__feature-icon {
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(135deg, var(--accent-color), #8b5cf6);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+
+    &__content {
+      padding: 2rem 1.5rem;
+    }
+
+    &__title {
+      font-size: 2rem;
+    }
+
+    &__actions {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    &__button {
+      width: 100%;
+    }
+
+    &__features {
+      grid-template-columns: 1fr;
+    }
+  }
+}

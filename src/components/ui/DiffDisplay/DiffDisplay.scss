@@ -1,0 +1,246 @@
+.diff-display {
+  margin: 0.75rem 0;
+  border: 1px solid #374151;
+  border-radius: 0.5rem;
+  background: #1f2937;
+  overflow: hidden;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace !important;
+  font-size: 0.875rem;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: #111827;
+    border-bottom: 1px solid #374151;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background: #1f2937;
+    }
+  }
+
+  &__file-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+  }
+
+  &__file-icon {
+    font-size: 0.875rem;
+    opacity: 0.7;
+  }
+
+  &__filepath {
+    color: #60a5fa;
+    font-size: 0.875rem;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
+  }
+
+  &__toggle {
+    color: #9ca3af;
+    font-size: 0.75rem;
+    margin-left: 0.25rem;
+  }
+
+  &__content {
+    background: #1f2937;
+  }
+
+  &__lines {
+    overflow-x: auto;
+  }
+
+  &__line {
+    min-height: 1.5rem;
+
+    &--add {
+      background: rgba(34, 197, 94, 0.15);
+    }
+
+    &--remove {
+      background: rgba(239, 68, 68, 0.12);
+    }
+
+    &--context {
+      background: transparent;
+    }
+
+    &:hover {
+      background: rgba(55, 65, 81, 0.2);
+    }
+  }
+
+  &__line-content {
+    padding: 0.125rem 1rem;
+    line-height: 1.6;
+    white-space: pre;
+    overflow-x: visible;
+    min-height: 1.5rem;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 0.875rem;
+
+    // Syntax highlighting overrides
+    .token.comment,
+    .token.prolog,
+    .token.doctype,
+    .token.cdata {
+      color: #6b7280;
+    }
+
+    .token.punctuation {
+      color: #d1d5db;
+    }
+
+    .token.property,
+    .token.tag,
+    .token.boolean,
+    .token.number,
+    .token.constant,
+    .token.symbol,
+    .token.deleted {
+      color: #f87171;
+    }
+
+    .token.selector,
+    .token.attr-name,
+    .token.string,
+    .token.char,
+    .token.builtin,
+    .token.inserted {
+      color: #34d399;
+    }
+
+    .token.operator,
+    .token.entity,
+    .token.url,
+    .language-css .token.string,
+    .style .token.string {
+      color: #60a5fa;
+    }
+
+    .token.atrule,
+    .token.attr-value,
+    .token.keyword {
+      color: #a78bfa;
+    }
+
+    .token.function,
+    .token.class-name {
+      color: #fbbf24;
+    }
+
+    .token.regex,
+    .token.important,
+    .token.variable {
+      color: #fb7185;
+    }
+  }
+
+  &__expand {
+    padding: 0.5rem 1rem;
+    border-top: 1px solid #374151;
+    background: #111827;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__expand-button {
+    background: transparent;
+    border: 1px solid #4b5563;
+    color: #9ca3af;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+
+    &:hover {
+      background: #374151;
+      color: #e5e7eb;
+      border-color: #6b7280;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    }
+
+    &:active {
+      background: #4b5563;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .diff-display {
+    font-size: 0.8rem;
+    margin: 0.5rem 0;
+
+    &__header {
+      padding: 0.5rem 0.75rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    &__operation {
+      width: 100%;
+    }
+
+    &__stats {
+      align-self: flex-end;
+    }
+
+    &__line-numbers {
+      min-width: 3rem;
+      padding: 0.25rem 0.375rem;
+    }
+
+    &__line-marker {
+      width: 1.5rem;
+    }
+
+    &__line-content {
+      padding: 0.25rem 0.5rem 0.25rem 0.375rem;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .diff-display {
+    border-width: 2px;
+
+    &__line {
+      border-left-width: 4px;
+
+      &--add {
+        background: rgba(34, 197, 94, 0.1);
+      }
+
+      &--remove {
+        background: rgba(239, 68, 68, 0.1);
+      }
+    }
+
+    &__line-numbers {
+      border-right-width: 2px;
+    }
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .diff-display {
+    &__header {
+      transition: none;
+    }
+  }
+}

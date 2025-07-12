@@ -1,0 +1,150 @@
+.file-tree {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--sidebar-bg);
+  border-top: 1px solid var(--border-color);
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-text);
+    border-bottom: 1px solid var(--border-color);
+    background: var(--accent-bg);
+  }
+
+  &__refresh {
+    background: none;
+    border: none;
+    color: var(--secondary-text);
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: var(--hover-bg);
+      color: var(--primary-text);
+    }
+  }
+
+  &__loading {
+    padding: 1rem;
+    text-align: center;
+    color: var(--secondary-text);
+    font-size: 0.875rem;
+  }
+
+  &__empty {
+    padding: 1rem;
+    text-align: center;
+    color: var(--secondary-text);
+    font-size: 0.875rem;
+  }
+
+  &__content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0.5rem 0;
+  }
+
+  &__node {
+    user-select: none;
+    margin-left: .4rem;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    // padding: 0.5rem 1rem;
+    padding: 0.5rem 0 0.5rem 0.3rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.875rem;
+    color: var(--primary-text);
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    
+
+    &:hover {
+      background: var(--hover-bg);
+    }
+
+    &--selected {
+      background: var(--accent-color);
+      color: white;
+    }
+
+    &--new {
+      animation: flash-green 2s ease-out;
+    }
+  }
+
+  &__icon {
+    margin-right: 0.5rem;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  &__name {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    // margin-left: 3rem;
+  }
+
+  &__toggle {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: var(--secondary-text);
+    transition: transform 0.2s ease;
+  }
+
+  &__children {
+    border-left: 1px solid var(--border-color);
+    margin-left: 1rem;
+  }
+}
+
+// Scrollbar styling for file tree
+.file-tree__content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.file-tree__content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.file-tree__content::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 2px;
+}
+
+.file-tree__content::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-text);
+}
+
+// Flash animation for newly created files
+@keyframes flash-green {
+  0% {
+    background-color: rgba(34, 197, 94, 0.3);
+    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+  }
+  50% {
+    background-color: rgba(34, 197, 94, 0.2);
+    box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.1);
+  }
+  100% {
+    background-color: transparent;
+    box-shadow: none;
+  }
+}

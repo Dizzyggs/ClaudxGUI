@@ -1,0 +1,259 @@
+.chat-interface {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 80rem;
+  height: 80vh;
+  background: rgba(17, 24, 39, 0.9);
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  animation: fadeInScale 0.4s ease-out;
+  transition: all 0.3s ease;
+
+  // Tab System
+  &__tabs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1e293b;
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    flex-shrink: 0;
+  }
+
+  &__tab-list {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  &__tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 0.125rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    color: #94a3b8;
+    font-size: 0.875rem;
+    min-width: 120px;
+    height: 100%;
+    
+    &:hover {
+      background: #334155;
+      color: #f1f5f9;
+    }
+    
+    &--active {
+      background: #3b82f6;
+      color: white;
+      border-color: #2563eb;
+      
+      &:hover {
+        background: #2563eb;
+      }
+    }
+    
+    &--terminal {
+      &.chat-interface__tab--active {
+        background: #059669;
+        border-color: #047857;
+        
+        &:hover {
+          background: #047857;
+        }
+      }
+    }
+  }
+
+  &__tab-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  &__tab-title {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+  }
+
+  &__tab-close {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 0.125rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    opacity: 0.7;
+    transition: all 0.15s ease;
+    
+    &:hover {
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  &__tab-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__new-terminal {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    background: #059669;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.15s ease;
+    
+    &:hover {
+      background: #047857;
+      transform: translateY(-1px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  &__chat-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  &__operations {
+    flex-shrink: 0;
+    padding: 16px;
+    background: rgba(15, 23, 42, 0.8);
+    border-bottom: 1px solid rgba(51, 65, 85, 0.3);
+    animation: slideInFromTop 0.3s ease-out;
+    transition: all 0.3s ease;
+  }
+
+  &__editor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  &__avatar {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: white;
+    }
+  }
+
+  &__info {
+    flex: 1;
+  }
+
+  &__project-name {
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: white;
+  }
+
+  &__subtitle {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+// Mobile responsiveness for tabs
+@media (max-width: 768px) {
+  .chat-interface {
+    &__tabs {
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 0.75rem;
+    }
+
+    &__tab-list {
+      width: 100%;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      gap: 0.5rem;
+      
+      &::-webkit-scrollbar {
+        height: 4px;
+      }
+      
+      &::-webkit-scrollbar-track {
+        background: #334155;
+        border-radius: 2px;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background: #64748b;
+        border-radius: 2px;
+      }
+    }
+
+    &__tab {
+      min-width: 100px;
+      flex-shrink: 0;
+    }
+
+    &__new-terminal {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}
+
+// Smooth animations
+@keyframes slideInFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,180 @@
+.progress-message {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin: 8px 0;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  animation: slideInFromLeft 0.4s ease-out;
+  
+  &:hover {
+    border-color: rgba(99, 102, 241, 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+  }
+
+  &__spinner {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border: 2px solid rgba(99, 102, 241, 0.2);
+    border-top: 2px solid #6366f1;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 1;
+  }
+
+  &__icon {
+    font-size: 16px;
+    z-index: 2;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  }
+
+  &__text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__action {
+    font-weight: 600;
+    color: #6366f1;
+    font-size: 14px;
+  }
+
+  &__filename {
+    color: #64748b;
+    font-size: 13px;
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    word-break: break-all;
+  }
+
+  &__check {
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  &__check-icon {
+    font-size: 18px;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  }
+
+  // Completed state
+  &--completed {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(59, 130, 246, 0.1));
+    border-color: rgba(34, 197, 94, 0.2);
+
+    .progress-message__action {
+      color: #22c55e;
+    }
+
+    .progress-message__spinner {
+      display: none;
+    }
+  }
+
+  // Different types
+  &--reading {
+    .progress-message__spinner {
+      border-top-color: #3b82f6;
+    }
+    .progress-message__action {
+      color: #3b82f6;
+    }
+  }
+
+  &--editing {
+    .progress-message__spinner {
+      border-top-color: #f59e0b;
+    }
+    .progress-message__action {
+      color: #f59e0b;
+    }
+  }
+
+  &--deleting {
+    .progress-message__spinner {
+      border-top-color: #ef4444;
+    }
+    .progress-message__action {
+      color: #ef4444;
+    }
+  }
+
+  &--adding {
+    .progress-message__spinner {
+      border-top-color: #10b981;
+    }
+    .progress-message__action {
+      color: #10b981;
+    }
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Dark theme support
+@media (prefers-color-scheme: dark) {
+  .progress-message {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
+    border-color: rgba(99, 102, 241, 0.3);
+
+    &__filename {
+      color: #94a3b8;
+    }
+
+    &--completed {
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(59, 130, 246, 0.15));
+      border-color: rgba(34, 197, 94, 0.3);
+    }
+
+    &:hover {
+      border-color: rgba(99, 102, 241, 0.4);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+    }
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

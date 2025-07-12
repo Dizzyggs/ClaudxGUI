@@ -1,0 +1,111 @@
+.app-header {
+  background: #0d1117;
+  border-bottom: 1px solid #30363d;
+  padding: 0;
+  position: relative;
+  z-index: 100;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  max-width: 100%;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+}
+
+.app-title {
+  color: #f0f6fc;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.project-name {
+  color: #8b949e;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 4px 8px;
+  background: rgba(56, 139, 253, 0.1);
+  border: 1px solid rgba(56, 139, 253, 0.2);
+  border-radius: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.settings-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #21262d;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: #f0f6fc;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: #30363d;
+    border-color: #58a6ff;
+    color: #58a6ff;
+  }
+  
+  &:active {
+    background: #1c2128;
+    transform: translateY(1px);
+  }
+  
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .header-content {
+    padding: 8px 16px;
+  }
+  
+  .app-title {
+    font-size: 16px;
+  }
+  
+  .project-name {
+    font-size: 12px;
+    max-width: 120px;
+  }
+  
+  .settings-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+    
+    // Hide text on very small screens, show only icon
+    @media (max-width: 480px) {
+      padding: 8px;
+      
+      span {
+        display: none;
+      }
+    }
+  }
+}
