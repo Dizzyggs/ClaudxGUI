@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Windows Zone.Identifier files (security metadata)
+*.Zone.Identifier
+
+# Database and user data
+data/claudxgui.db
+data/images/
+
+# Logs and temporary files
+/tmp/
+*.tmp
